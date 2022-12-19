@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+html,body,#root,.App{
+    height: 100%;
+    overflow: auto;
+}
+.lg-i {
+    z-index: 999;
+}
+.md-i {
+    z-index: 500;
+}
+.sm-i {
+    z-index: 200;
+}
+.-i {
+    z-index: -1;
+}
+.text-overflow {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
