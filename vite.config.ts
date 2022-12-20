@@ -19,5 +19,20 @@ export default defineConfig({
       "@": resolve(__dirname, "./src"),
       "*": resolve("")
     }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/assets/css/constant.scss";`
+      }
+    }
+  },
+  server: {
+    proxy: {
+      "/api": {
+        target: "http://43.142.96.61/",
+        changeOrigin: true
+      }
+    }
   }
 })
