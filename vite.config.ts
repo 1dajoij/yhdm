@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import reactSvgPlugin from "vite-plugin-react-svg";
 import Unocss from 'unocss/vite'
 import { presetWind } from "unocss"
 import {resolve} from "path";
@@ -12,6 +13,7 @@ export default defineConfig({
         presetWind()
       ]
     }),
+    reactSvgPlugin(),
     react(),
   ],
   resolve: {

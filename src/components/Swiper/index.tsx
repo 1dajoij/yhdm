@@ -1,20 +1,7 @@
 import { Image } from 'antd';
 import { errImage } from "@/assets/errorImg";
 
-interface IcardRequest {
-    id: number;
-    name: string;
-    largest_amount: null;
-    release_data: string;
-    score: number;
-    picUrl: string;
-    finish_state: string;
-    starring: string;
-    hot: number;
-    type: string;
-};
-
-const renderlist: IcardRequest[] = [
+const renderlist = [
     {
         "id":175,
         "name":"歌之王子殿下第四季",
@@ -231,7 +218,7 @@ const renderlist: IcardRequest[] = [
         "hot":253,
         "type":"day_comic-html"
         }
-]
+];
 
 export default function index() {
     return (
