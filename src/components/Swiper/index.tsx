@@ -1,7 +1,20 @@
 import { Image } from 'antd';
-import {errImage } from "@/assets/errorImg";
+import { errImage } from "@/assets/errorImg";
 
-const renderlist = [
+interface IcardRequest {
+    id: number;
+    name: string;
+    largest_amount: null;
+    release_data: string;
+    score: number;
+    picUrl: string;
+    finish_state: string;
+    starring: string;
+    hot: number;
+    type: string;
+};
+
+const renderlist: IcardRequest[] = [
     {
         "id":175,
         "name":"歌之王子殿下第四季",
@@ -226,7 +239,10 @@ export default function index() {
             <ul className='flex flex-wrap'>
                 {
                     renderlist?.map(item => {
-                        return <li key={item.id} className='m-x-10px cursor-pointer m-y-8px w-238px h-96px flex justify-around items-center'>
+                        return <li key={item.id}
+                            m-x-10px cursor-pointer m-y-8px w-238px h-96px justify-around items-center
+                            className='flex'
+                        >
                             <Image preview={false} src={item.picUrl} fallback={errImage} width={64} height={96}  className="rounded"/>
                             <div className='describe w-156px flex flex-col justify-around h-100%'>
                                 <h4 className='text-size-16px text-overflow'>

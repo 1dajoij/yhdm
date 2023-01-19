@@ -7,6 +7,43 @@
         background-image: radial-gradient(transparent 1px,#ffffff 1px);
         background-color: transparent;
     }
+    .nav .link {
+        height: 100%;
+        color: $text-light;
+        cursor: pointer;
+        &:hover {
+            animation: dither .3s ease;
+            animation-iteration-count: 1;
+            @keyframes dither {
+                0% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-4px);
+                }
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+        }
+    }
+    .search_input .input{
+        input,div.btn {
+            background-color: rgb(219,217,217);
+            opacity: 0.3;
+            transition: opacity .2s ease;
+        }
+        &:hover input, &:hover div.btn {
+            background-color: rgb(219, 217, 217);
+            opacity: 0.4;
+        }
+        div.btn img {
+            transition: background .2s ease;
+            &:hover {
+                background-color: rgba(0,0,0,.2);
+            }
+        }
+    }
 }
 // Card
 .mask{

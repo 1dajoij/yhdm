@@ -1,4 +1,4 @@
-import Items from "@/components/Items";
+import Swiper from "@/components/Swiper";
 import RowCard from "@/components/RowCard";
 
 const list = [
@@ -91,12 +91,13 @@ const list = [
           "hot":44,
           "type":"National_comics-html"
           }
-]
+];
+
 export default function index() {
   return (
     <div>
       {/* 之后改成swiper类型 */}
-      {/* <Items /> */}
+      {/* <Swiper /> */}
       <RowCard title="国产动漫" renderList={list}/>
     </div>
   )
