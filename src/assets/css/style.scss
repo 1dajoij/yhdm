@@ -48,13 +48,19 @@
             transform: translateY(0px);
         }
     }
-}
+};
 // Card
 .card {
     & > .img {
         box-shadow: 0 1px 2px rgba(0 0 0 / 10%);
+        .play .ant-image {
+            transition: transform .2s ease-out;
+        }
         &:hover .play {
             opacity: 1
+        }
+        &:hover .play .ant-image {
+            transform: scale(0.8);
         }
     }
     .card-shadow {
@@ -72,7 +78,15 @@
     .name {
         color: $text-color;
         &:hover {
-            color: $text-active-color
+            color: $text-active-color;
+        }
+    }
+};
+// CardList
+.cardlist {
+    .more {
+        &:hover {
+            color: $text-active-color;
         }
     }
 }

@@ -1,3 +1,11 @@
+export interface Isuc {
+    code: 200;
+    message?: string;
+};
+export interface Ierr {
+    code: 400;
+    message?: string;
+};
 export interface Icard {
     id: number;
     name: string;
@@ -9,4 +17,15 @@ export interface Icard {
     starring: string;
     hot: number;
     type: string;
+};
+
+export interface Tspecific {
+    id: number,
+    director: string,
+    brief_introduction: string,
+    same_type_list: string;
+    last_updata_time: string,
+    episodes: string,
+    isUpdate: string,
+    region: string
 };

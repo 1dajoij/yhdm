@@ -1,28 +1,42 @@
 import Swiper from "@/components/Swiper";
 import CardList from "@/components/CardList";
+import { getHomeInfo, Thome } from "@/request/api";
 import { Icard } from "@/type";
-
-const list: Icard[] = [
-  {
-    "id":8156,
-    "name":"万界神主",
-    "largest_amount":null,
-    "release_data":"2021",
-    "score":7.2,
-    "picUrl":"https://cdn1.hjzcjx.com/jpg/ly1gwdh1mq74qj307i0aiwet.jpg",
-    "finish_state":"更新至284集",
-    "starring":"内详",
-    "hot":44,
-    "type":"National_comics-html"
-    }
-];
+import { useEffect, useState } from "react";
 
 export default function index() {
+  const [list, setList] = useState<{
+    [key: string]: {
+      hots: Icard[];
+      news: Icard[];
+    }
+  } | null>(null);
+
+  const getHome = async () => {
+    const res = await getHomeInfo();
+    console.log(res)
+    if(res.code === 200) {
+      setList((res as Thome).MovieInfo);
+    };
+  };
+
+  useEffect(() => {
+    getHome();
+  }, [])
+
   return (
     <div>
-      {/* 之后改成swiper类型 */}
       {/* <Swiper /> */}
-      <CardList title="国产动漫" renderList={list}/>
+      {
+        list ? 
+          <div className="cardlist">
+            <CardList title="国产动漫" renderList={list["CH-anime"].news}/>
+            <CardList title="日本动漫" renderList={list["JP-anime"].news}/>
+            <CardList title="动漫电影" renderList={list["MV-anime"].news}/>
+            <CardList title="美国动漫" renderList={list["US-anime"].news}/>
+          </div>
+        : null
+      }
     </div>
   )
 }

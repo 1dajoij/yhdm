@@ -1,51 +1,52 @@
 import axios from "@/request/index";
-import Request from "@/request/type";
+import { Icard, Isuc, Ierr } from "@/type"
 
-interface Thomeinfo {
-    recommendList: Request.Tcardinfo[],
+interface Ihomeinfo {
+    recommendList: Icard[],
     MovieInfo: {
         [key: string]: {
-            news: Request.Tcardinfo[],
-            hots: Request.Tcardinfo[]
+            news: Icard[],
+            hots: Icard[]
         }
     }
 };
-type Thome = Thomeinfo & Request.Tsuc;
 
-export const getHomeInfo = async (): Promise<Thome | Request.Terr> => {
-    const res: Thome | Request.Terr = await axios.get("/api/get/exhibition/home");
+export type Thome = Ihomeinfo & Isuc;
+
+export const getHomeInfo = async (): Promise<Thome | Ierr> => {
+    const res: Thome | Ierr = await axios.get("/api/get/exhibition/home");
     return res;
 };
 
 interface Tclassify {
-    [key: string]: Request.Tcardinfo[]
+    [key: string]: Icard[]
 };
-type Tclass = Tclassify & Request.Tsuc;
+export type Tclass = Tclassify & Isuc;
 
 export const getClassify = async (
     limit: number = 1,
     offset: number = 0,
     type: "hot" | "release_data" = "hot",
     classify_name: 1 | 2 | 3 | 4 | null = null
-): Promise<Tclass | Request.Terr> => {
-    const res: Tclass | Request.Terr = await axios.post("/api/get/exhibition/home", {
+): Promise<Tclass | Ierr> => {
+    const res: Tclass | Ierr = await axios.post("/api/get/exhibition/home", {
         limit, offset, type, classify_name
     });
     return res;
 };
 
 interface Tsearch {
-    renderList: Request.Tcardinfo[],
+    renderList: Icard[],
     allListLen: number
 };
-type Tsec = Tsearch & Request.Tsuc;
+export type Tsec = Tsearch & Isuc;
 
 export const getSearchInfo = async (
     name: string,
     limit: number = 30,
     offset: number = 0
-): Promise<Tsec | Request.Terr> => {
-    const res: Tsec | Request.Terr = await axios.post("/api/get/exhibition/search", {
+): Promise<Tsec | Ierr> => {
+    const res: Tsec | Ierr = await axios.post("/api/get/exhibition/search", {
         name, limit, offset
     });
     return res;
@@ -57,12 +58,12 @@ interface Tsearchlenovo {
         id: number
     }[]
 };
-type Tseclenovo = Tsearchlenovo & Request.Tsuc;
+export type Tseclenovo = Tsearchlenovo & Isuc;
 
 export const getSearchLenovo = async (
     name: string
-): Promise<Tseclenovo | Request.Terr> => {
-    const res: Tseclenovo | Request.Terr = await axios.post("/api/get/exhibition/search_lenovo", {
+): Promise<Tseclenovo | Ierr> => {
+    const res: Tseclenovo | Ierr = await axios.post("/api/get/exhibition/search_lenovo", {
         name
     });
     return res
