@@ -51,6 +51,7 @@
 };
 // Card
 .card {
+    user-select: none;
     & > .img {
         box-shadow: 0 1px 2px rgba(0 0 0 / 10%);
         .play .ant-image {
@@ -87,6 +88,48 @@
     .more {
         &:hover {
             color: $text-active-color;
+        }
+    }
+};
+// Swiper
+.swiper {
+    .swiper-filter {
+        background-repeat: no-repeat;
+        background-size: cover;
+        transition: background .3s ease;
+        filter: blur(80px);
+    }
+    & .swiper-button-next, .swiper-button-prev {
+        color: #fff;
+        transition: background ease .3s;
+        background-color: rgba(0,0,0,.4);
+        &::after{
+            font-size: 16px;
+        }
+        &:hover {
+            background-color: $text-active-color;
+        }
+    }
+    & .swiper-button-next {
+        border-radius: 0 6px 6px 0;
+        right: 0px;
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+    & .swiper-button-prev {
+        border-radius: 6px 0 0 6px;
+        left: 0px;
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+    &:hover .swiper-button-prev, &:hover .swiper-button-next {
+        opacity: 1;
+    }
+    & .swiper-slide {
+        transition: transform .3s ease;
+        transform: scale(0.85);
+        &.swiper-slide-active {
+            transform: scale(1);
         }
     }
 }

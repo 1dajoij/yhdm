@@ -12,21 +12,26 @@ export default function index() {
     }
   } | null>(null);
 
+  const [swiperList, setSwiperList] = useState<Icard[] | null>(null)
+
   const getHome = async () => {
     const res = await getHomeInfo();
     console.log(res)
     if(res.code === 200) {
       setList((res as Thome).MovieInfo);
+      setSwiperList((res as Thome).recommendList);
     };
   };
 
   useEffect(() => {
     getHome();
-  }, [])
+  }, []);
 
   return (
-    <div>
-      {/* <Swiper /> */}
+    <>
+      {
+        swiperList ? <Swiper renderList={swiperList}/> : null
+      }
       {
         list ? 
           <div className="cardlist">
@@ -37,6 +42,6 @@ export default function index() {
           </div>
         : null
       }
-    </div>
+    </>
   )
 }

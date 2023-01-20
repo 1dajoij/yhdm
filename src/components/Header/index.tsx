@@ -23,7 +23,7 @@ export default function index() {
   }, [open])
   return (
     <animated.div style={springs}
-    className='header w-100% box-border max-h-76px h-76px border-b flex justify-center b-coolgray-2 fixed md-i'
+    className='header w-100% box-border max-h-76px h-32px border-b flex justify-center opacity-60 b-coolgray-2 fixed md-i'
         onMouseEnter={() => setopen(true)}
         onMouseLeave={() => setopen(false)}
     >

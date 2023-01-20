@@ -1,12 +1,13 @@
 import Header from "@/components/Header";
-import Main from "@/components/Main";
 
-function App() {
+function App(props: {
+  children?: React.ReactNode
+}) {
   return (
     <div className="App">
       <Header />
-      <div className="m-t-40px h-100%">
-        <Main />
+      <div className="h-100%">
+        {props.children ? props.children : null}
       </div>
     </div>
   )
