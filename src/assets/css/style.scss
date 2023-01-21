@@ -2,7 +2,7 @@
 .header{
     background-color: #ffffff;
     backdrop-filter: saturate(50%) blur(4px);
-    background-size: 8px 8px;
+    background-size: 14px 14px;
     &:hover {
         background-image: radial-gradient(transparent 1px,#ffffff 1px);
         background-color: transparent;
@@ -85,6 +85,14 @@
 };
 // CardList
 .cardlist {
+    div.icon {
+        height: 32px;
+        padding-right: 8px;
+        cursor: pointer;
+        img{
+            height: 100%;
+        }
+    }
     .more {
         &:hover {
             color: $text-active-color;

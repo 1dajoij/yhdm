@@ -34,12 +34,12 @@ export default function index() {
       }
       {
         list ? 
-          <div className="cardlist">
+          <>
             <CardList title="国产动漫" renderList={list["CH-anime"].news}/>
             <CardList title="日本动漫" renderList={list["JP-anime"].news}/>
             <CardList title="动漫电影" renderList={list["MV-anime"].news}/>
             <CardList title="美国动漫" renderList={list["US-anime"].news}/>
-          </div>
+          </>
         : null
       }
     </>

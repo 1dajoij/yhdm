@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { animated, useSpring } from '@react-spring/web';
+import { useNavigate } from "react-router-dom";
 import home from "@/assets/svg/home.svg";
 import search from "@/assets/svg/search.svg";
 import history from "@/assets/svg/history.svg";
 
 export default function index() {
+
+  const navigate = useNavigate();
+
   const [open, setopen] = useState<boolean>(false);
   const [springs, api] = useSpring(() => {});
   useEffect((): void => {
@@ -32,17 +36,30 @@ export default function index() {
         >
           <div className="flex h-100% justify-between bg-transparent">
             <ul className="nav h-100% flex items-center p-x-16px bg-white">
-              <li className="link flex p-x-6px text-15px items-center">
+              <li className="link flex p-x-6px text-15px items-center"
+                onClick={() => navigate("/")}
+              >
                 <img src={home} alt="首页" className="h-14px p-r-3px"/>
                 <span>首页</span>
               </li>
-              <li className="link flex p-x-6px text-15px items-center">
+              <li className="link flex p-x-6px text-15px items-center"
+                onClick={() => navigate("/types_1")}
+              >
                 <span>国产动漫</span>
               </li>
-              <li className="link flex p-x-6px text-15px items-center">
+              <li className="link flex p-x-6px text-15px items-center"
+                onClick={() => navigate("/types_2")}
+              >
                 <span>日本动漫</span>
               </li>
-              <li className="link flex p-x-6px text-15px items-center">
+              <li className="link flex p-x-6px text-15px items-center"
+                onClick={() => navigate("/types_3")}
+              >
+                <span>动漫电影</span>
+              </li>
+              <li className="link flex p-x-6px text-15px items-center"
+                onClick={() => navigate("/types_4")}
+              >
                 <span>美国动漫</span>
               </li>
             </ul>

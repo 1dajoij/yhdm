@@ -14,7 +14,7 @@ export default function index(props: {item: Icard}) {
           <Image preview={false} src={play} width="32%"/>
         </span>
         <span className="card-shadow text-left absolute box-border w-100% text-size-14px font-400 bottom-0 left-0 p-y-5px p-x-10px">
-          <span className="w-100% block text-overflow color-white">
+          <span className="w-100% p-b-4px block text-overflow color-white">
             {props.item.name}
           </span>
         </span>

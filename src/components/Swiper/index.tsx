@@ -4,7 +4,7 @@ import "swiper/css/navigation";
 import { Icard } from "@/type";
 // 组件
 import SwiperCard from "@/components/Swiper/SwiperCard";
-import { Navigation } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 // hooks
 import { useEffect, useState } from "react";
@@ -19,10 +19,9 @@ export default function index(props: {
     const { innerWidth: width } = useResize();
 
     useEffect(() => {
-        if(width > 1024) {
-            setShowCount(6);
-        } else if(width > 768) {
-            setShowCount(4);
+        // 1024
+        if(width > 768) {
+            setShowCount(5);
         } else {
             setShowCount(3);
         }
@@ -37,7 +36,7 @@ export default function index(props: {
     return (
         <>
             {
-                props.renderList ? <div  className='swiper relative p-10px p-y-42px bg-#282832'>
+                props.renderList ? <div  className='swiper relative p-10px p-y-76px bg-#282832'>
                     <div className="swiper-filter absolute w-100% h-100%"
                         style={{backgroundImage: `url(${props.renderList[active].picUrl})`}}
                     ></div>
@@ -47,7 +46,11 @@ export default function index(props: {
                         loop={true}
                         navigation={true}
                         centeredSlides={true}
-                        modules={[Navigation]}
+                        autoplay={{
+                            delay: 3000,
+                            disableOnInteraction: false
+                        }}
+                        modules={[Navigation, Autoplay]}
                         className="mySwiper max-w-1206px w-100%"
                     >
                         {
