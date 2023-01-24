@@ -43,7 +43,7 @@ export type Tsec = Tsearch & Isuc;
 
 export const getSearchInfo = async (
     name: string,
-    limit: number = 30,
+    limit: number = 8,
     offset: number = 0
 ): Promise<Tsec | Ierr> => {
     const res: Tsec | Ierr = await axios.post("/api/get/exhibition/search", {

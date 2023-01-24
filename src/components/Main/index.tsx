@@ -4,7 +4,7 @@ import { getHomeInfo, Thome } from "@/request/api";
 import { Icard } from "@/type";
 import { useEffect, useState } from "react";
 
-export default function index() {
+function index() {
   const [list, setList] = useState<{
     [key: string]: {
       hots: Icard[];
@@ -16,13 +16,13 @@ export default function index() {
 
   const getHome = async () => {
     const res = await getHomeInfo();
-    console.log(res)
     if(res.code === 200) {
       setList((res as Thome).MovieInfo);
       setSwiperList((res as Thome).recommendList);
     };
   };
 
+  
   useEffect(() => {
     getHome();
   }, []);
@@ -44,4 +44,6 @@ export default function index() {
       }
     </>
   )
-}
+};
+
+export default index

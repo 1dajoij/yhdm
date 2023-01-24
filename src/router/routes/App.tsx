@@ -1,14 +1,13 @@
 import Header from "@/components/Header";
-import { Outlet } from "react-router-dom";
+import StillnessOutlet from "@/router/cache";
 
-function App(props: {
-  children?: React.ReactNode
-}) {
+
+function App() {
   return (
     <div className="App">
       <Header />
       <div className="h-100%">
-        <Outlet />
+        <StillnessOutlet keeplive={["/"]} />
       </div>
     </div>
   )

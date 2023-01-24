@@ -36,7 +36,7 @@ export default function index(props: {
     return (
         <>
             {
-                props.renderList ? <div  className='swiper relative p-10px p-y-76px bg-#282832'>
+                props.renderList ? <div  className='swiper relative p-10px p-t-108px p-b-46px bg-#282832'>
                     <div className="swiper-filter absolute w-100% h-100%"
                         style={{backgroundImage: `url(${props.renderList[active].picUrl})`}}
                     ></div>
