@@ -1,12 +1,12 @@
 export const debounce = (fn: Function, delay:number = 400): () => void => {
-    let time: NodeJS.Timeout;
-    function _debounce(): void {
-        if (time !== null) {
-            clearTimeout(time)
+    let timer: NodeJS.Timeout;
+    function _debounce(...args: any[]): void {
+        if (timer) {
+            clearTimeout(timer);
         };
-        time = setTimeout(() => {
-            fn()
+        timer = setTimeout(() => {
+            fn(...args)
         }, delay)
     };
     return _debounce
-}
+};

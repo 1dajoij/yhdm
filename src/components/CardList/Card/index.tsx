@@ -2,10 +2,18 @@ import { Image, Tag } from "antd";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import play from "@/assets/svg/play.svg"
 import { Icard } from "@/type";
+import { useNavigate } from "react-router-dom";
 
 export default function index(props: {item: Icard}) {
+  const navigate = useNavigate();
   return (
-    <div className="card lg-w-16.6666667% md-w-25% w-33.3333333% p-10px overflow-hidden box-border">
+    <div 
+      className="card lg-w-16.6666667% md-w-25% w-33.3333333% p-10px overflow-hidden box-border"
+      onClick={() => { navigate({
+        pathname: `views/${props.item.id}`,
+        search: `?name=${props.item.name}&starring=${props.item.starring.replace(/&/ig, "、")}`
+      }) }}
+    >
       <div className="img w-100% p-y-75% relative overflow-hidden rounded cursor-pointer">
         <div className="insert inset-0 absolute">
           <LazyLoadImage src={props.item.picUrl} width="100%" height="100%" alt={props.item.name} />

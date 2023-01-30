@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Icard } from "@/type";
 import { getSearchInfo, Tsec } from "@/request/api";
 import { debounce } from "@/untils";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SearchBox from "@/components/Header/SearchBox";
 import home from "@/assets/svg/home.svg";
 import search from "@/assets/svg/search.svg";
@@ -12,24 +12,17 @@ export default function Header() {
 
   const navigate = useNavigate();
 
-  const [input, setInput] = useState<string>("");
-
   const [list, setList] = useState<Icard[]>([]);
   const [visiable, setVisiable] = useState<boolean>(false);
 
-  const handleIpt = async () => {
-    const res = await getSearchInfo(input);
-    console.log(res);
+  const handleIpt = async (ev: React.ChangeEvent<HTMLInputElement>) => {
+    const res = await getSearchInfo(ev.target.value);
     if(res.code === 200) {
       setList((res as Tsec).renderList);
     }
   }
 
-  const debounceIpt = debounce(handleIpt, 700);
-
-  useEffect(() => {
-    debounceIpt();
-  }, [input]);
+  const debounceIpt: Function = debounce(handleIpt, 400);
   return (
     <div
     className='header w-100% box-border h-76px border-b flex justify-center b-coolgray-2 fixed md-i'
@@ -68,8 +61,8 @@ export default function Header() {
             <div className="search_input lg-m-l-64px md-m-l-36px p-x-26px flex h-100% items-center bg-white">
               <div className="input rounded-8px flex items-center relative">
                 <input className="lg-w-306px md-w-228px sm-w-184px w-104px h-42px b-none rounded-l-8px leading-32px
-                  outline-none indent-14px" placeholder="请输入关键字" value={input}
-                  onChange={(e) => {setInput(e.target.value)}}
+                  outline-none indent-14px" placeholder="请输入关键字"
+                  onChange={(e) => {debounceIpt(e)}}
                   onFocus={() => {setVisiable(true)}}
                   onBlur={() => {setVisiable(false)}}
                   type="text"/>

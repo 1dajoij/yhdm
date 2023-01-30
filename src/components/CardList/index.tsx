@@ -15,16 +15,16 @@ export default function index(props: {renderList: Icard[], title?: Ttitle}) {
   const skip = () => {
     switch(props.title) {
       case "国产动漫":
-        navigate("types_1");
+        navigate("/types_1");
         break;
       case "日本动漫":
-        navigate("types_2");
+        navigate("/types_2");
         break;
       case "动漫电影":
-          navigate("types_3");
+          navigate("/types_3");
           break;
       case "美国动漫":
-          navigate("types_4");
+          navigate("/types_4");
           break;
     }
   }

@@ -1,31 +1,39 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "@/router/routes/App";
-import Main from "@/components/Main";
+import App from "@/router/App/App";
+import Main from "@/router/Main";
+import Classify from "@/router/Main/classify";
+import ErrorPage from "@/router/ErrorPage";
+import View, { loader as viewLoader } from "@/router/View";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [{
-            path: "/",
+            index: true,
             id: "home",
             element: <Main />
         }, {
             path: "/types_1",
             id: "CH",
-            element: <>CH</>
+            element: <Classify type={1} />
         }, {
             path: "/types_2",
             id: "JP",
-            element: <>JP</>
+            element: <Classify type={2} />
         }, {
             path: "/types_3",
             id: "MV",
-            element: <>MV</>
+            element: <Classify type={3} />
         }, {
             path: "/types_4",
             id: "US",
-            element: <>US</>
+            element: <Classify type={4} />
+        }, {
+            path: "/views/:viewid",
+            loader: viewLoader,
+            element: <View />
         }]
     }
 ]);

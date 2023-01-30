@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import useResize from "@/hooks/useResize";
 
 
-export default function index(props: {
+export default function Index(props: {
     renderList: Icard[]
 }) {
     const [showCount, setShowCount] = useState(6);
@@ -36,7 +36,7 @@ export default function index(props: {
     return (
         <>
             {
-                props.renderList ? <div  className='swiper relative p-10px p-t-108px p-b-46px bg-#282832'>
+                props.renderList.length ? <div  className='swiper relative p-10px p-y-46px bg-#282832'>
                     <div className="swiper-filter absolute w-100% h-100%"
                         style={{backgroundImage: `url(${props.renderList[active].picUrl})`}}
                     ></div>

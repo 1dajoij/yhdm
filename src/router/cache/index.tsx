@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { Offscreen } from "react-stillness-component";
 import { useOutlet, useLocation } from "react-router-dom";
 
@@ -42,7 +41,7 @@ const StillnessOutLets = (props: {
     return newOutlets
   };
 
-  // 缓存组件超过 4个 后 清除第一个 缓存
+  // 缓存组件超过 6个 后 清除第一个 缓存
   useEffect(() => {
     if(outlets.length > 6) {
       deleteCache("start");

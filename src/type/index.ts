@@ -19,7 +19,7 @@ export interface Icard {
     type: string;
 };
 
-export interface Tspecific {
+export interface Ispecific {
     id: number,
     director: string,
     brief_introduction: string,
