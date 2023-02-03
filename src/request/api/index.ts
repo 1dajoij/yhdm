@@ -106,7 +106,10 @@ export const getSwiper = async (
 /**
  * 动漫详情
  */
-export type Tspecific = {specific: Ispecific} & Isuc;
+export type Tspecific = {
+    specific: Ispecific[],
+    guess: Icard[]
+} & Isuc;
 export const getSpecific = async(
     id: number
 ): Promise<Tspecific | Ierr> => {

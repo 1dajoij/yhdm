@@ -2,6 +2,7 @@ import { Image, Tag } from "antd";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import play from "@/assets/svg/play.svg"
 import { Icard } from "@/type";
+import errorImg from "@/assets/img/load.gif";
 import { useNavigate } from "react-router-dom";
 
 export default function index(props: {item: Icard}) {
@@ -10,13 +11,16 @@ export default function index(props: {item: Icard}) {
     <div
       className="card w-100% box-border p-x-10px overflow-hidden"
       onClick={() => { navigate({
-        pathname: `views/${props.item.id}`,
-        search: `?name=${props.item.name}&starring=${props.item.starring.replace(/&/ig, "、")}`
+        pathname: `/views/${props.item.id}`
       }) }}
     >
       <div className="img w-100% p-y-75% relative overflow-hidden rounded cursor-pointer">
         <div className="insert inset-0 absolute">
-          <LazyLoadImage src={props.item.picUrl} width="100%" height="100%" alt={props.item.name} />
+          <LazyLoadImage src={props.item.picUrl} width="100%" height="100%"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = errorImg
+            }}
+          />
         </div>
         <span className="play w-100% h-100% absolute inset-0 flex justify-center items-center">
           <Image preview={false} src={play} width="32%"/>

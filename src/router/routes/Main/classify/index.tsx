@@ -26,7 +26,6 @@ export default function Classify(props: {
   const updateRenderlist = async () => {
     let offset = (page - 1) * 30;
     const res = await getClassify(props.type, offset);
-    console.log(res)
     // 国漫
     if((res.code === 200) && res["National_comics-html"]?.renderList.length) {
       if(res["National_comics-html"]?.allListLen > len) {

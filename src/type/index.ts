@@ -27,5 +27,10 @@ export interface Ispecific {
     last_updata_time: string,
     episodes: string,
     isUpdate: string,
-    region: string
+    region: string,
+    name: string,
+    starring: string,
+    picUrl: string,
+    release_data: string,
+    score: number
 };
