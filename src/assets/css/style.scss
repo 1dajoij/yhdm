@@ -155,3 +155,34 @@
         color: rgb(248, 113, 113);
     }
 }
+// scroolBar
+.scrollBar {
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: rgb(133, 127, 127);
+    }
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0);
+        border-radius: 0;
+        background: rgba(0,0,0,0.1);
+    }
+};
+// playBtnlist
+.playBtnlist{
+    .btn.active {
+        background-color: rgb(238, 182, 77);
+        color: #fff;
+    }
+    .btn:hover {
+        color: rgba(248, 113, 113, var(--un-text-opacity));
+    }
+    .btn.active:hover{
+        background-color: rgb(248, 201, 113);
+        color: #fff;
+    }
+}

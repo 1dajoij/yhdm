@@ -117,4 +117,29 @@ export const getSpecific = async(
         id
     });
     return res;
-}
+};
+
+/**
+ * 播放信息
+ */
+export type TplayMovie = {
+    info: {
+        id: number,
+        name: string,
+        score: number,
+        release_data: string
+    }
+    movie: string,
+    movieLens: number,
+    guess: Icard[]
+} & Isuc;
+export const getPlayMovie = async (
+    id: number,
+    index: number
+): Promise<TplayMovie | Ierr> => {
+    const res: TplayMovie | Ierr = await axios.post("/api/get/exhibition/video_page_info", {
+        id, index
+    });
+    return res;
+};
+

@@ -2,11 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { Icard } from "@/type";
 import { getSearchInfo, Tsec } from "@/request/api";
 import { debounce } from "@/untils";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import SearchBox from "@/components/Header/SearchBox";
 import home from "@/assets/svg/home.svg";
 import search from "@/assets/svg/search.svg";
-import history from "@/assets/svg/history.svg";
+// import history from "@/assets/svg/history.svg";
 
 export default function Header() {
 
@@ -19,10 +19,32 @@ export default function Header() {
     const res = await getSearchInfo(ev.target.value);
     if(res.code === 200) {
       setList((res as Tsec).renderList);
+      setVisiable(true);
     }
   }
 
   const debounceIpt: Function = debounce(handleIpt, 400);
+
+  const searchIpt = useRef(null);
+  const searchBox = useRef(null);
+
+  const hideIpt = (ev: MouseEvent): void => {
+    if(ev.target === searchIpt.current) return;
+    setVisiable(false);
+  };
+
+  const updateSearch = (str: string): void => {
+    if(!searchIpt.current) return;
+    (searchIpt.current as HTMLInputElement).value = str;
+  };
+
+  useEffect(() => {
+    const body = document.querySelector("body");
+    body?.addEventListener("click", hideIpt);
+    return () => {
+      body?.removeEventListener("click", hideIpt)
+    };
+  }, [])
   return (
     <div
     className='header w-100% box-border h-76px border-b flex justify-center b-coolgray-2 fixed md-i'
@@ -38,22 +60,22 @@ export default function Header() {
                 <span>首页</span>
               </li>
               <li className="link flex p-x-6px text-15px items-center"
-                onClick={() => navigate("/types_1")}
+                onClick={() => navigate("/types/1/1")}
               >
                 <span>国产动漫</span>
               </li>
               <li className="link flex p-x-6px text-15px items-center"
-                onClick={() => navigate("/types_2")}
+                onClick={() => navigate("/types/2/1")}
               >
                 <span>日本动漫</span>
               </li>
               <li className="link flex p-x-6px text-15px items-center"
-                onClick={() => navigate("/types_3")}
+                onClick={() => navigate("/types/3/1")}
               >
                 <span>动漫电影</span>
               </li>
               <li className="link flex p-x-6px text-15px items-center"
-                onClick={() => navigate("/types_4")}
+                onClick={() => navigate("/types/4/1")}
               >
                 <span>美国动漫</span>
               </li>
@@ -62,22 +84,25 @@ export default function Header() {
               <div className="input rounded-8px flex items-center relative">
                 <input className="lg-w-306px md-w-228px sm-w-184px w-104px h-42px b-none rounded-l-8px leading-32px
                   outline-none indent-14px" placeholder="请输入关键字"
+                  ref={searchIpt}
                   onChange={(e) => {debounceIpt(e)}}
-                  onFocus={() => {setVisiable(true)}}
-                  onBlur={() => {setVisiable(false)}}
+                  onFocus={(e) => handleIpt(e)}
                   type="text"/>
                 <div className="btn h-42px w-42px b-none flex items-center justify-center rounded-r-8px">
                   <img src={search} alt="搜索" className="h-18px p-x-5px p-y-5px rounded cursor-pointer"/>
                 </div>
-                <SearchBox list={list} visiable={visiable}/>
+                <SearchBox Ref={searchBox} list={list} visiable={visiable} callback={updateSearch}/>
               </div>
             </div>
           </div>
-          <ul className="icon_list bg-white p-x-16px h-100% flex items-center">
+          {
+            // 想了一下，不太会做历史记录，需要时间学习一下
+          }
+          {/* <ul className="icon_list bg-white p-x-16px h-100% flex items-center">
             <li className="history h-100% p-x-12px flex items-center cursor-pointer">
               <img src={history} alt="历史记录" className="h-20px"/>
             </li>
-          </ul>
+          </ul> */}
           {
             // 暂时不确定有没有用户的功能
           }

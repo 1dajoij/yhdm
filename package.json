@@ -21,7 +21,8 @@
     "react-router-dom": "^6.5.0",
     "react-stillness-component": "^0.9.1",
     "sass": "^1.57.1",
-    "swiper": "^8.4.6"
+    "swiper": "^8.4.6",
+    "video.js": "^8.0.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
